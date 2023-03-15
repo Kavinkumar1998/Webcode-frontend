@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+*{
+  padding : 0px; 
+  margin : 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-component{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: rgb(190, 231, 255);
 }
 
-.App-link {
-  color: #61dafb;
+.heading{
+  padding : 50px; 
+  font-family: sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-segment{
+  width : 100%;
+  height: 75%;
+  text-align: center;
+}
+.card-container{
+  display: grid;
+  gap:0.5 rem;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  background-color: rgb(190, 231, 255);
+}
+.card{
+  margin:20px;
+}
+
+.input{
+  background-color: rgb(46, 182, 224);
+}
+.children-segment{
+  border: 1px solid red;
+}
+.card-comp{
+ box-shadow : 3px 3px 10px 0px rgb(22, 11, 11);
+ background-color: rgb(33, 175, 231);
+}
+.Cardactions{
+  background-color: rgb(33, 175, 231);
+  justify-content: center;
+}
+.heading{
+  text-align: center;
+}
+.main-segment{
+  text-align: center;  
+}
+.Component-box{
+  background-color: rgb(190, 231, 255);
+}
+.Drawer{
+  background-color: rgb(190, 231, 255);
+}
+.login-container{
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+ 
+}
+.card-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signin{
+  margin: 0px;
+}
+.signin:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
