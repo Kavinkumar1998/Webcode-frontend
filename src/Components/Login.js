@@ -69,7 +69,7 @@ export const Loginpage = () => {
           </Button>
           <small
             style={{ cursor: "pointer" }}
-            onClick={() =>   history.push("/login/forgetpassword")}
+            onClick={() =>   history.push("/forgetpassword")}
           >
             forget password?
             <hr style={{ opacity: 0.5, width: "70%" }} />

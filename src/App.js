@@ -98,7 +98,7 @@ console.log(error);
        <Loginpage/>
      </Route>
    
-     <Route path = "/login/forgetpassword">
+     <Route path = "/forgetpassword">
      <Forgetpassword/>
      </Route>
    
