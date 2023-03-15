@@ -98,7 +98,7 @@ console.log(error);
        <Loginpage/>
      </Route>
    
-     <Route path = "/login/forgotpassword">
+     <Route path = "/login/forgetpassword">
      <Forgetpassword/>
      </Route>
    
@@ -162,6 +162,8 @@ console.log(error);
       Servicereqs={Servicereqs}
        setServicereqs={setServicereqs}/>
      </Route>
+
+
 
      
 
