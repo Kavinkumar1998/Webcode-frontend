@@ -16,7 +16,7 @@ export const Forgetpassword = () => {
       },
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
-        const data = await fetch(`https://wecode-backend.vercel.app/api/login/forgetpassword`, {
+        const data = await fetch(`https://wecode-backend.vercel.app/api/forgetpassword`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(values),

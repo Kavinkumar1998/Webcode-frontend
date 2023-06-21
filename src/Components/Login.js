@@ -31,7 +31,10 @@ export const Loginpage = () => {
           alert("invalid Credantials");
         } else {
           const result = await data.json();
+          localStorage.setItem("Name", result.Name);
+          localStorage.setItem("Email", result.Email);
           localStorage.setItem("token", result.token);
+          localStorage.setItem("role", result.role);
           history.push("/admin/adduser");
         }
       },

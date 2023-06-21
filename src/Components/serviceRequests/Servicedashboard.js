@@ -1,7 +1,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 import React from 'react'
-import Base from '../../Base/Base';
 import { useHistory } from 'react-router-dom'
+import { Dashboard } from '../../Base/Base2';
 
 
 const Servicedashboard = ({Servicereqs,setServicereqs}) => {
@@ -28,8 +28,8 @@ const data = await response.json();
   
   };
   return (
-    <Base
-    title = "Servicereqs Details"
+    <Dashboard
+    title = "Servicerequst Details"
     description= "Veiw Servicereqs Details Here"
     >
   <div className="card-container"> 
@@ -64,7 +64,7 @@ const data = await response.json();
               ))}
         </div>
   
-  </Base>
+  </Dashboard>
   
   )
 }

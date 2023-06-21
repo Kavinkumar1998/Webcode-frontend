@@ -29,13 +29,13 @@ export const SignupPage = () => {
         })
           .then((response) => response.json())
           .then((data) => console.log(data));
-          history.push("/login");
+          history.push("/");
           console.log("saved")
       },
     });
 
   const reDirect = () => {
-    history.push("/login")
+    history.push("/")
   };
 
   return (
@@ -48,7 +48,7 @@ export const SignupPage = () => {
             value={values.FirstName}
             onChange={handleChange}
             onBlur={handleBlur}
-            label="Name"
+            label="FirstName"
             variant="outlined"
             error={touched.FirstName && errors.FirstName}
             helperText={touched.FirstName && errors.FirstName ? errors.FirstName : null}
@@ -58,7 +58,7 @@ export const SignupPage = () => {
             value={values.LastName}
             onChange={handleChange}
             onBlur={handleBlur}
-            label="Name"
+            label="LastName"
             variant="outlined"
             error={touched.LastName && errors.LastName}
             helperText={touched.LastName && errors.LastName ? errors.LastName : null}

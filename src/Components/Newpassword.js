@@ -19,7 +19,7 @@ export const NewPassword = () => {
       },
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
-        const data = await fetch(`https://wecode-backend.vercel.app/api/login/setpassword`, {
+        const data = await fetch(`https://wecode-backend.vercel.app/api/setpassword`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(values),

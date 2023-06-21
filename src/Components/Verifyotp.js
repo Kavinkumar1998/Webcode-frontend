@@ -11,7 +11,7 @@ export const Verifyotp = () => {
       OTP: "",
     },
     onSubmit: async (values) => {
-      const data = await fetch(`https://wecode-backend.vercel.app/api/login/verifyotp`, {
+      const data = await fetch(`https://wecode-backend.vercel.app/api/verifyotp`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),

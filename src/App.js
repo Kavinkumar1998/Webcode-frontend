@@ -7,15 +7,19 @@ import { Verifyotp } from './Components/Verifyotp';
 import { EmailVerification } from './Components/Emailverification';
 import { NewPassword} from './Components/Newpassword';
 import { useEffect, useState } from 'react';
-import AddServicerequests from './Components/serviceRequests/Addservice';
+
 import Adduser from './Components/Users/AddUsers.js';
-import Nopage from './Components/Nopage';
 import Edituser from './Components/Users/EditUsers';
+import Userdashboard from './Components/Users/Userdashboard';
 import Addleads from './Components/Leads/Addleads';
 import Editleads from './Components/Leads/Editleads';
-import EditServicereqs from './Components/serviceRequests/Editservice';
-import Userdashboard from './Components/Users/Userdashboard';
 import Leaddashboard from './Components/Leads/Leaddashboard';
+import AddServicerequests from './Components/serviceRequests/Addservice';
+import EditServicereqs from './Components/serviceRequests/Editservice';
+
+
+import { Dashboard } from './Base/Base2';
+import Servicedashboard from './Components/serviceRequests/Servicedashboard';
 
 
 function App() {
@@ -68,7 +72,7 @@ console.log(error);
 useEffect(() => {
   const getServicereqs= async()=>{
     try{
-      const response= await fetch("https://wecode-backend.vercel.app/api/userRequests",{
+      const response= await fetch("https://wecode-backend.vercel.app/api/userRequests/allRequests",{
         method : "GET"
       });
       const data= await response.json();
@@ -86,16 +90,12 @@ console.log(error);
     <div className="App">
 
 <Route exact path = "/">
-<SignupPage/>
+<Loginpage/>
     </Route>
    
 
 <Route path = "/signup">
        <SignupPage/>
-     </Route>
-   
-     <Route path = "/login">
-       <Loginpage/>
      </Route>
    
      <Route path = "/forgetpassword">
@@ -163,13 +163,19 @@ console.log(error);
        setServicereqs={setServicereqs}/>
      </Route>
 
+     <Route path = "/user/servicerequests">
+       <Servicedashboard
+      Servicereqs={Servicereqs}
+       setServicereqs={setServicereqs}/>
+     </Route>
 
 
+     <Route path = "/Dashboard">
+     <Dashboard/>
+     </Route>
      
 
-     <Route path = "**">
-       <Nopage/>
-     </Route>
+  
 
     </div>
   );

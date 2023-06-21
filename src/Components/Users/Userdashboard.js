@@ -1,7 +1,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 import React from 'react'
-import Base from '../../Base/Base';
 import { useHistory } from 'react-router-dom'
+import { Dashboard } from '../../Base/Base2';
 
 
 const Userdashboard = ({User,setUser}) => {
@@ -28,7 +28,7 @@ const data = await response.json();
   
   };
   return (
-    <Base
+    <Dashboard
     title = "User Details"
     description= "Veiw User Details Here"
     >
@@ -64,7 +64,7 @@ const data = await response.json();
               ))}
         </div>
   
-  </Base>
+  </Dashboard>
   
   )
 }

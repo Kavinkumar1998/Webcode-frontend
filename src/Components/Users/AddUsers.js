@@ -1,10 +1,10 @@
 import React from 'react'
-import Base from '../../Base/Base';
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from '@mui/material'
 import * as yup from 'yup'
 
 import { useFormik } from 'formik'
+import { Dashboard } from '../../Base/Base2';
 
 
 
@@ -68,7 +68,7 @@ const Adduser = ({User,setUser}) => {
 
 
               return (
-                <Base title="Add  User data"
+                <Dashboard title="Add  User data"
                 description="You can Add a New User Data" >
               <div className="input">
                                <form onSubmit={handleSubmit}>
@@ -125,7 +125,7 @@ const Adduser = ({User,setUser}) => {
                       
                                </form>
                           </div>
-                </Base>
+                </Dashboard>
                 )
 }
 

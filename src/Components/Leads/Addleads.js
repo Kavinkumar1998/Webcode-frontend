@@ -1,9 +1,9 @@
 import React from 'react'
-import Base from '../../Base/Base'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from '@mui/material'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
+import { Dashboard } from '../../Base/Base2'
 
 
 export const userValidationSchema = yup.object({
@@ -64,7 +64,7 @@ const Addleads = ({Leads,setLeads}) => {
 
 
               return (
-                <Base title="Add Leads"
+                <Dashboard title="Add Leads"
                 description="You can Add a New Lead Data" >
               <div className="input">
                                <form onSubmit={handleSubmit}>
@@ -113,7 +113,7 @@ const Addleads = ({Leads,setLeads}) => {
                       
                                </form>
                           </div>
-                </Base>
+                </Dashboard>
                 )
 }
 

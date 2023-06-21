@@ -1,7 +1,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
-import React from 'react'
-import Base from '../../Base/Base';
+import React from 'react';
 import { useHistory } from 'react-router-dom'
+import { Dashboard } from '../../Base/Base2';
 
 
 const Leaddashboard = ({Leads,setLeads}) => {
@@ -28,9 +28,9 @@ const data = await response.json();
   
   };
   return (
-    <Base
-    title = "User Details"
-    description= "Veiw User Details Here"
+    <Dashboard
+    title = "Leads"
+    description= "Veiw Lead Details Here"
     >
   <div className="card-container"> 
               {Leads.map((User,index)=>(
@@ -64,7 +64,7 @@ const data = await response.json();
               ))}
         </div>
   
-  </Base>
+  </Dashboard>
   
   )
 }

@@ -4,11 +4,7 @@
 }
 
 .main-component{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(190, 231, 255);
+ 
 }
 
 .heading{
@@ -22,10 +18,7 @@
   text-align: center;
 }
 .card-container{
-  display: grid;
-  gap:0.5 rem;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  background-color: rgb(190, 231, 255);
+
 }
 .card{
   margin:20px;

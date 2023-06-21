@@ -9,7 +9,7 @@ export const EmailVerification = () => {
       OTP: "",
     },
     onSubmit: async (values) => {
-      const data = await fetch(`https://wecode-backend.vercel.app/api/login/mailverification`, {
+      const data = await fetch(`https://wecode-backend.vercel.app/api/mailverification`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),

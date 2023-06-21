@@ -1,8 +1,8 @@
-import React from 'react'
-import Base from '../../Base/Base'
-import {useState, useEffect} from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import { Button, TextField } from '@mui/material'
+import React from 'react';
+import {useState, useEffect} from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
+import { Dashboard } from '../../Base/Base2';
 
 const EditServicereqs = ({Servicereqs,setServicereqs}) => {
 
@@ -66,7 +66,7 @@ console.log(error);
 
 
   return (
-    <Base
+    <Dashboard
     title = "Edit Servicereqs Form"
     description= "Edit Servicereqs detail here">
 <div className="input">
@@ -83,7 +83,7 @@ console.log(error);
            <Button className="add-btn" onClick={()=>updatedata()} variant="contained" color="primary">UPDATE</Button>
           
             </div>
-            </Base>
+            </Dashboard>
   )
 }
 
