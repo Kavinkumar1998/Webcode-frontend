@@ -108,7 +108,7 @@ const logout= ()=>{
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
-              backgroundColor: 'rgb(130, 15, 201)'
+              backgroundColor: '#27374D'
             }}
           >
             <IconButton
@@ -156,7 +156,7 @@ const logout= ()=>{
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1,color:"rgb(130, 15, 201)",fontWeight:"Bold" }}
+              sx={{ flexGrow: 1,color:"#27374D",fontWeight:"Bold" }}
             >
               Dashboard
             </Typography>
@@ -165,13 +165,13 @@ const logout= ()=>{
           <Divider />
           
           <IconButton onClick={()=>{ history.push("/Home")}}>
-          <HomeRoundedIcon sx={{fontSize:25,color:"rgb(130, 15, 201)",}}  />
+          <HomeRoundedIcon sx={{fontSize:25,color:"#27374D",}}  />
           <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                ...(!open && { display: 'none' })}}>
              Home
             </Typography>
@@ -181,13 +181,13 @@ const logout= ()=>{
             <Divider sx={{ my: 1 }} />
 
             <IconButton onClick={()=>{ history.push("/admin/adduser")}}>
-                <PersonAddAltRoundedIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}} />
+                <PersonAddAltRoundedIcon sx={{fontSize:25,color:"#27374D"}} />
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
              AddUsers
@@ -196,29 +196,29 @@ const logout= ()=>{
 
 
             <IconButton onClick={()=>{ history.push("/admin/userdashboard")}}>
-            <SupervisedUserCircleIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}}/>
+            <SupervisedUserCircleIcon sx={{fontSize:25,color:"#27374D"}}/>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
-              Employers
+              Employees
             </Typography>
             </IconButton>
 
   <Divider sx={{ my: 1 }} />
 
             <IconButton onClick={()=>{ history.push("/employee/addLeads")}}>
-                <GroupAddRoundedIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}}/>
+                <GroupAddRoundedIcon sx={{fontSize:25,color:"#27374D"}}/>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' }) }}
             >
            Add leads
@@ -228,13 +228,13 @@ const logout= ()=>{
            
 
             <IconButton onClick={()=>{history.push("/employee/Leaddashboard")}}>
-                < DashboardCustomizeRoundedIcon  sx={{fontSize:25,color:"rgb(130, 15, 201)"}} />
+                < DashboardCustomizeRoundedIcon  sx={{fontSize:25,color:"#27374D"}} />
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
              Lead Dashboard
@@ -244,13 +244,13 @@ const logout= ()=>{
             <Divider sx={{ my: 1 }} />
 
             <IconButton onClick={()=>{history.push("/user/addServicerequests")}}>
-                <SupportAgentIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}}/>
+                <SupportAgentIcon sx={{fontSize:25,color:"#27374D"}}/>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
            Add Service
@@ -261,13 +261,13 @@ const logout= ()=>{
 
             
             <IconButton onClick={()=>{history.push("/user/servicerequests")}}>
-                <NotificationsActiveIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}}/>
+                <NotificationsActiveIcon sx={{fontSize:25,color:"#27374D"}}/>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
            Service Requests
@@ -277,13 +277,13 @@ const logout= ()=>{
             <Divider sx={{ my: 1 }} />
 
             <IconButton onClick={()=>{history.push("/About")}}>
-                < InfoRoundedIcon sx={{fontSize:25,color:"rgb(130, 15, 201)"}}/>
+                < InfoRoundedIcon sx={{fontSize:25,color:"#27374D"}}/>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,color:"rgb(130, 15, 201)",fontWeight:"Bold",
+              sx={{ flexGrow: 1 ,color:"#27374D",fontWeight:"Bold",
                 ...(!open && { display: 'none' })}}
             >
             About Us
@@ -297,7 +297,7 @@ const logout= ()=>{
           sx={{
             flexGrow: 1,
             height: '100vh',
-            overflow: 'auto',  backgroundColor:" rgb(195, 179, 253)"
+            overflow: 'auto',  backgroundColor:"  #DDE6ED"
           }}
         >
           <Toolbar />
@@ -306,7 +306,7 @@ const logout= ()=>{
                <h1 className ="heading">{title}</h1>
            </header>
            <main className="main-segment">
-               <h2>{description}</h2>
+               <h2 className ="heading">{description}</h2>
                <div className="child-segment">
                    {children}
                </div>

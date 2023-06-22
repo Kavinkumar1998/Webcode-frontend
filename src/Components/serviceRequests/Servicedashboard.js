@@ -2,6 +2,7 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Dashboard } from '../../Base/Base2';
+import withAuthorization from '../../Authorization';
 
 
 const Servicedashboard = ({Servicereqs,setServicereqs}) => {
@@ -14,7 +15,9 @@ const Servicedashboard = ({Servicereqs,setServicereqs}) => {
   const response = await fetch(`https://wecode-backend.vercel.app/api/userRequests/deleteRequests/${Id}`,{
     method:"DELETE",
     headers: {
-     "Content-Type":"application/json"
+      "x-auth-token": localStorage.getItem("token"),
+       "Content-Type":"application/json",
+       'role':  localStorage.getItem("role")
     },
    });
 const data = await response.json();
@@ -28,10 +31,8 @@ const data = await response.json();
   
   };
   return (
-    <Dashboard
-    title = "Servicerequst Details"
-    description= "Veiw Servicereqs Details Here"
-    >
+    <Dashboard title="Service Request Details"
+    description="Veiw Service Request Data">
   <div className="card-container"> 
               {Servicereqs.map((Servicereqs,index)=>(
                        <Card sx={{ maxWidth: 345 }} key ={Servicereqs._id} className="card">
@@ -41,15 +42,15 @@ const data = await response.json();
                          Name : {Servicereqs.name}
                          </Typography>
 
-                         <Typography gutterBottom variant="h5" component="div">
+                         <Typography gutterBottom variant="h6" component="div">
                          email : {Servicereqs.email}
                          </Typography>
 
-                         <Typography variant="body2" color="text.secondary">
+                         <Typography variant="body3">
                          phoneNumber : {Servicereqs.phoneNumber}
                          </Typography>
-  
-                         <Typography variant="body2" color="text.secondary">
+                         <br/>
+                         <Typography variant="body3" >
                          service : {Servicereqs.service}
                          </Typography>
   
@@ -69,4 +70,4 @@ const data = await response.json();
   )
 }
 
-export default Servicedashboard
+export default withAuthorization(Servicedashboard)

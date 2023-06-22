@@ -1,10 +1,11 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Button, TextField } from '@mui/material'
+import { Box, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material'
 import * as yup from 'yup'
 
 import { useFormik } from 'formik'
 import { Dashboard } from '../../Base/Base2';
+import withAuthorization from '../../Authorization'
 
 
 
@@ -46,7 +47,9 @@ const Adduser = ({User,setUser}) => {
                             method:"POST",
                             body : JSON.stringify(newUsers),
                             headers: {
-                             "Content-Type":"application/json"
+                              "x-auth-token": localStorage.getItem("token"),
+                              "Content-Type":"application/json",
+                              'role':  localStorage.getItem("role")
                             },
                            });
             
@@ -55,8 +58,8 @@ const Adduser = ({User,setUser}) => {
                            
                          setUser([...User,Sdata])
                       
-                           history.push("/Userdashboard")
-                        
+                           history.push("/admin/userdashboard")
+                           history.go(0);
                   
                   }
                   catch(error){
@@ -68,65 +71,123 @@ const Adduser = ({User,setUser}) => {
 
 
               return (
-                <Dashboard title="Add  User data"
-                description="You can Add a New User Data" >
-              <div className="input">
-                               <form onSubmit={handleSubmit}>
-                               <TextField
-                           fullWidth label="Enter the First Name" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.FirstName} 
-                            name="FirstName"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.FirstName && errors.FirstName? <p style={{color:"red"}}> {errors.FirstName} </p>: ""}
-              
-                              <TextField
-                           fullWidth label="Enter the Last Name" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.LastName} 
-                            name="LastName"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.LastName && errors.LastName? <p style={{color:"red"}}> {errors.LastName} </p>: ""}
+                <Dashboard title="Add  Employee data"
+                description="You can Add a Employee Data" >
 
-                              <TextField
-                           fullWidth label="Enter the email" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.email} 
-                            name="email"
-                            onBlur= {handleBlur}
+              <div className="input">
+                              
+<Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box className="main-box"  >
+          <Typography    sx={{fontWeight:"Bold","@media(max-width: 480px)":{
+            fontSize:"16px"
+          }}}  component="h1" variant="h5"> Add Employee Details </Typography>
+           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+            <Grid item xs={12}>
+
+                <TextField
+                  required
+                  fullWidth
+                  id="FirstName"
+                  label="FirstName"
+                  name="FirstName"
+                  value={values.FirstName}
+                  autoComplete="FirstName"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.FirstName && errors.FirstName}
+                  helperText={touched.FirstName&& errors.FirstName ? errors.FirstName : null}
+                />
+              </Grid>
+                
+
+              <Grid item xs={12}>
+
+             <TextField
+              required
+              fullWidth
+              id="LastName"
+              label="LastName"
+              name="LastName"
+              value={values.LastName}
+              autoComplete="LastName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.LastName && errors.LastName}
+              helperText={touched.LastName && errors.LastName ? errors.LastName : null}
                             />
-                              {touched.email && errors.email ? <p style={{color:"red"}}> {errors.email} </p>: ""}
+                              </Grid>
+
               
-                          <TextField
-                           fullWidth label="Enter the password"
-                            id="fullWidth"
-                             onChange={handleChange}
-                              value={values.password}
-                               name="password"
-                               onBlur= {handleBlur}
-                               />
-                                {touched.password && errors.password ? <p style={{color:"red"}}> {errors.password} </p>: ""}
-              
-                          <TextField
-                           fullWidth label="Enter the role"
-                            id="fullWidth" 
-                            onChange={handleChange}
-                             value={values.role}
-                              name="role"
-                              onBlur= {handleBlur}
-                               />
-                                {touched.role && errors.role ? <p style={{color:"red"}}> {errors.role} </p>: ""}
-              
-                        
-              
-                            <Button className="add-btn" type="submit" variant="contained" color="success">ADD</Button>
-                      
-                               </form>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && errors.email}
+                  helperText={touched.email && errors.email ? errors.email : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="password"
+                  label="password"
+                  name="password"
+                  autoComplete="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.password && errors.password}
+                  helperText={touched.password && errors.password ? errors.password : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="role"
+                  label="role"
+                  name="role"
+                  autoComplete="role"
+                  value={values.role}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.role && errors.role}
+                  helperText={touched.role && errors.role? errors.role : null}
+                  
+                />
+              </Grid>
+
+
+            </Grid>
+            <Button 
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 ,fontWeight:"Bold"}}
+            >
+             Add Employee
+            </Button>
+          </Box>
+        </Box>
+
+      </Container>
                           </div>
                 </Dashboard>
                 )
 }
 
-export default Adduser
+export default withAuthorization(Adduser)

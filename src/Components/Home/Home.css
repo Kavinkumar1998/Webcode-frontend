@@ -1,0 +1,49 @@
+.content{
+    display:flex;
+    flex-direction:column;
+    margin-top:10rem
+ }
+ .content>:nth-child(1){
+
+  font-weight:bold ;
+  font-size:3em;
+ }
+ .content>:nth-child(2){
+   font-weight: bold;
+   font-size:2rem;
+ }
+ .content>:nth-child(3){
+align-self: center;
+}
+.button{
+    margin-top: 2rem;
+      width: 10rem;
+     height: 3rem;
+     font-weight: bold;
+     font-size:1.5rem;
+     background-color: rgb(107, 107, 155);
+     border-radius: 25px;
+   }
+
+@media screen and (max-width: 480px) {
+  .content{
+  
+    margin-top:8rem
+ }
+    .content>:nth-child(1){
+      align-self: center;
+        font-weight:bold ;
+        font-size:1.5em;
+       }
+       .content>:nth-child(2){
+         font-weight: bold;
+         font-size:1rem;
+       }
+       .content>:nth-child(3){
+      align-self: center;
+      }
+      .button{
+      transform: scale(0.5);
+       }
+    
+}

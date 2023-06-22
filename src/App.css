@@ -4,7 +4,11 @@
 }
 
 .main-component{
- 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #DDE6ED;
 }
 
 .heading{
@@ -18,24 +22,29 @@
   text-align: center;
 }
 .card-container{
-
+  margin-top:7rem;
+  display: grid;
+  gap:0.5 rem;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
 }
 .card{
   margin:20px;
 }
 
 .input{
-  background-color: rgb(46, 182, 224);
+  margin-top: 10rem;
+  align-content: center;
 }
 .children-segment{
   border: 1px solid red;
 }
 .card-comp{
  box-shadow : 3px 3px 10px 0px rgb(22, 11, 11);
- background-color: rgb(33, 175, 231);
+ background-color:#526D82;
+   color:aliceblue;
 }
 .Cardactions{
-  background-color: rgb(33, 175, 231);
+  background-color: #526D82;
   justify-content: center;
 }
 .heading{
@@ -45,10 +54,11 @@
   text-align: center;  
 }
 .Component-box{
-  background-color: rgb(190, 231, 255);
+  
+  background-color:  #DDE6ED
 }
 .Drawer{
-  background-color: rgb(190, 231, 255);
+  background-color: #DDE6ED
 }
 .login-container{
   margin: 100px auto;
@@ -61,6 +71,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
 }
 .signin{
   margin: 0px;
@@ -68,4 +79,7 @@
 .signin:hover{
   cursor: pointer;
   text-decoration: underline;
+}
+.header{
+  align-self: center;
 }

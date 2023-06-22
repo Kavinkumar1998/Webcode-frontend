@@ -41,7 +41,7 @@ export const SignupPage = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Card className="login-container">
-        <h2>Sign up</h2>
+        <h2 className="header">Sign up</h2>
         <CardContent className="card-content">
           <TextField
             name="FirstName"

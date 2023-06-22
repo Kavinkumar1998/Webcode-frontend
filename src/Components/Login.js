@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, TextField } from "@mui/material";
+import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useHistory } from 'react-router-dom'
 import * as yup from "yup";
@@ -42,7 +42,7 @@ export const Loginpage = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Card className="login-container">
-        <h4>Welcome </h4>
+        <h4 className="header">Welcome </h4>
         <CardContent className="card-content">
           <TextField
             name="email"
@@ -87,6 +87,8 @@ export const Loginpage = () => {
             Create Account
           </Button>
         </CardContent>
+        <Typography  component="h2" variant="h6">Email:kavinajith1498@gmail.com</Typography>
+        <Typography  component="h2" variant="h6"> Password: 123456789 </Typography>
       </Card>
     </form>
   );

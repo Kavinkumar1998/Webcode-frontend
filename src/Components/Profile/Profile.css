@@ -1,0 +1,27 @@
+.profile{
+    border:2px solid black;
+    border-radius: 20px;
+    align-self: center;
+    display: flex;
+    flex-direction:column;
+    margin-top:12rem;
+    padding: 10px;
+    height:auto;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-family: cursive;
+    background-color:#526D82;
+    color:aliceblue;
+   
+}
+
+@media screen and (max-width: 480px) {
+
+    .profile{
+      width:100%;
+  transform: scale(0.9);
+        }
+      
+         }

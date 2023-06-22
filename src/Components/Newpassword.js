@@ -35,7 +35,7 @@ export const NewPassword = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Card className="login-container">
-        <h4>Reset your Password</h4>
+        <h4 className="header">Reset your Password</h4>
         <CardContent className="card-content">
           <TextField
             name="email"

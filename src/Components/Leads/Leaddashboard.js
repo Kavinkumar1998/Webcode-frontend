@@ -2,6 +2,7 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { Dashboard } from '../../Base/Base2';
+import withAuthorization from '../../Authorization';
 
 
 const Leaddashboard = ({Leads,setLeads}) => {
@@ -14,13 +15,16 @@ const Leaddashboard = ({Leads,setLeads}) => {
   const response = await fetch(`https://wecode-backend.vercel.app/api/Leads/deleteLeads/${Id}`,{
     method:"DELETE",
     headers: {
-     "Content-Type":"application/json"
+      "x-auth-token": localStorage.getItem("token"),
+      "Content-Type":"application/json",
+      'role':  localStorage.getItem("role")
     },
    });
 const data = await response.json();
 
     const removeUser = Leads.filter((User)=>User._id !== Id);
     setLeads(removeUser);
+    history.go(0);
   }catch(error){
     console.log(error);
       } 
@@ -28,10 +32,9 @@ const data = await response.json();
   
   };
   return (
-    <Dashboard
-    title = "Leads"
-    description= "Veiw Lead Details Here"
-    >
+    <Dashboard 
+    title="Lead Details"
+    description="Veiw Lead Data">
   <div className="card-container"> 
               {Leads.map((User,index)=>(
                        <Card sx={{ maxWidth: 345 }} key ={User.id} className="card">
@@ -41,23 +44,23 @@ const data = await response.json();
                         Name : {User.name}
                          </Typography>
 
-                         <Typography gutterBottom variant="h5" component="div">
+                         <Typography gutterBottom variant="h6" component="div">
                          email : {User.email}
                          </Typography>
 
-                         <Typography variant="body2" color="text.secondary">
-                         PhoneNumber : {User.PhoneNumber}
+                         <Typography variant="body3">
+                         PhoneNumber : {User.phoneNumber}
                          </Typography>
-  
-                         <Typography variant="body2" color="text.secondary">
+                         <br/>
+                         <Typography variant="body3" >
                          status : {User.status}
                          </Typography>
   
   
                        </CardContent>
                        <CardActions className="Cardactions">
-                       <Button onClick={()=>history.push(`/employee/editLeads/${Leads._id}`)} variant="contained" color="secondary">EDIT</Button>
-                       <Button onClick={()=>deletedata(Leads._id)}  variant="contained" color="error">DELETE</Button>
+                       <Button onClick={()=>history.push(`/employee/editLeads/${User._id}`)} variant="contained" color="secondary">EDIT</Button>
+                       <Button onClick={()=>deletedata(User._id)}  variant="contained" color="error">DELETE</Button>
 
                        </CardActions>
                      </Card>
@@ -69,4 +72,4 @@ const data = await response.json();
   )
 }
 
-export default Leaddashboard
+export default withAuthorization(Leaddashboard)

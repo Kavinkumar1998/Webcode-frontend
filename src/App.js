@@ -20,6 +20,9 @@ import EditServicereqs from './Components/serviceRequests/Editservice';
 
 import { Dashboard } from './Base/Base2';
 import Servicedashboard from './Components/serviceRequests/Servicedashboard';
+import Profile from './Components/Profile/Profile';
+import About from './Components/About/About';
+import Home from './Components/Home/Home';
 
 
 function App() {
@@ -33,7 +36,7 @@ const[Servicereqs,setServicereqs]= useState([]);
 useEffect(() => {
   const getUser= async()=>{
     try{
-      const response= await fetch("https://wecode-backend.vercel.app/api/Users",{
+      const response= await fetch("https://wecode-backend.vercel.app/api/Users/allUsers",{
         method : "GET",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
@@ -52,7 +55,7 @@ console.log(error);
 useEffect(() => {
   const getLeads= async()=>{
     try{
-      const response= await fetch("https://wecode-backend.vercel.app/api/Leads",{
+      const response= await fetch("https://wecode-backend.vercel.app/api/Leads/allLeads",{
         method : "GET",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
@@ -73,7 +76,10 @@ useEffect(() => {
   const getServicereqs= async()=>{
     try{
       const response= await fetch("https://wecode-backend.vercel.app/api/userRequests/allRequests",{
-        method : "GET"
+        method : "GET",
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
       });
       const data= await response.json();
       setServicereqs(data);
@@ -120,7 +126,7 @@ console.log(error);
        setUser={setUser}/>
      </Route>
 
-     <Route path = "/admin/edituser">
+     <Route path = "/admin/edituser/:Id">
        <Edituser
        User={User}
        setUser={setUser}/>
@@ -139,7 +145,7 @@ console.log(error);
        setLeads={setLeads}/>
      </Route>
 
-     <Route path = "/employee/editLeads">
+     <Route path = "/employee/editLeads/:Id">
        <Editleads
     Leads={Leads}
        setLeads={setLeads}/>
@@ -157,7 +163,7 @@ console.log(error);
        setServicereqs={setServicereqs}/>
      </Route>
 
-     <Route path = "/user/editServicerequests">
+     <Route path = "/user/editServicerequests/:Id">
        <EditServicereqs
       Servicereqs={Servicereqs}
        setServicereqs={setServicereqs}/>
@@ -170,11 +176,19 @@ console.log(error);
      </Route>
 
 
-     <Route path = "/Dashboard">
-     <Dashboard/>
+     <Route path = "/Profile">
+     <Profile/>
      </Route>
      
 
+     <Route path = "/About">
+     <About/>
+     </Route>
+
+     
+     <Route path = "/Home">
+     <Home/>
+     </Route>
   
 
     </div>

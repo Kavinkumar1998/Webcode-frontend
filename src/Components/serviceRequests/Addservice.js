@@ -1,9 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Button, TextField } from '@mui/material'
+import { Box, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import { Dashboard } from '../../Base/Base2'
+import withAuthorization from '../../Authorization'
 
 
 
@@ -43,7 +44,9 @@ const AddServicerequests = ({Servicereqs,setServicereqs}) => {
                             method:"POST",
                             body : JSON.stringify(newServicereqs),
                             headers: {
-                             "Content-Type":"application/json"
+                              "x-auth-token": localStorage.getItem("token"),
+                             "Content-Type":"application/json",
+                              'role':  localStorage.getItem("role")
                             },
                            });
             
@@ -52,8 +55,8 @@ const AddServicerequests = ({Servicereqs,setServicereqs}) => {
                            
                          setServicereqs([...Servicereqs,Sdata])
                       
-                           history.push("/servicedashboard")
-                        
+                           history.push("/user/servicerequests")
+                           history.go(0);
                   
                   }
                   catch(error){
@@ -65,57 +68,101 @@ const AddServicerequests = ({Servicereqs,setServicereqs}) => {
 
 
               return (
-                <Dashboard title="Add Service requests"
-                description="You can Add a New Service requests Data" >
+                <Dashboard  title="Add  Service Request data"
+                description="You can Add a New Service Request">
               <div className="input">
-                               <form onSubmit={handleSubmit}>
-                               <TextField
-                           fullWidth label="Enter the First Name" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.name} 
-                            name="name"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.name && errors.name? <p style={{color:"red"}}> {errors.name} </p>: ""}
-              
+              <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box className="main-box"  >
+          <Typography    sx={{fontWeight:"Bold","@media(max-width: 480px)":{
+            fontSize:"16px"
+          }}}  component="h1" variant="h5"> Add Service Request Details </Typography>
+           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+            <Grid item xs={12}>
 
-                              <TextField
-                           fullWidth label="Enter the email" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.email} 
-                            name="email"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.email && errors.email ? <p style={{color:"red"}}> {errors.email} </p>: ""}
-              
-                          <TextField
-                           fullWidth label="Enter the phoneNumber"
-                            id="fullWidth"
-                             onChange={handleChange}
-                              value={values.phoneNumber}
-                               name="phoneNumber"
-                               onBlur= {handleBlur}
-                               />
-                                {touched.phoneNumber && errors.phoneNumber ? <p style={{color:"red"}}> {errors.phoneNumber} </p>: ""}
-              
-                          <TextField
-                           fullWidth label="Enter the Service"
-                            id="fullWidth" 
-                            onChange={handleChange}
-                             value={values.service}
-                              name="service"
-                              onBlur= {handleBlur}
-                               />
-                                {touched.service && errors.service ? <p style={{color:"red"}}> {errors.service} </p>: ""}
-              
-                        
-              
-                            <Button className="add-btn" type="submit" variant="contained" color="success">ADD</Button>
-                      
-                               </form>
+                <TextField
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="name"
+                  value={values.name}
+                  autoComplete="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.name && errors.name}
+                  helperText={touched.name && errors.name ? errors.name : null}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && errors.email}
+                  helperText={touched.email && errors.email ? errors.email : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phoneNumber"
+                  label="Phone Number"
+                  name="phoneNumber"
+                  autoComplete="phoneNumber"
+                  value={values.phoneNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.phoneNumber && errors.phoneNumber}
+                  helperText={touched.phoneNumber && errors.phoneNumber ? errors.phoneNumber : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="service"
+                  label="Service"
+                  name="service"
+                  autoComplete="service"
+                  value={values.service}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.service && errors.service}
+                  helperText={touched.service && errors.service? errors.service : null}
+                  
+                />
+              </Grid>
+
+
+            </Grid>
+            <Button 
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 ,fontWeight:"Bold"}}
+            >
+             Add Service
+            </Button>
+          </Box>
+        </Box>
+
+      </Container>  
                           </div>
                 </Dashboard>
                 )
 }
 
-export default AddServicerequests 
+export default withAuthorization(AddServicerequests) 

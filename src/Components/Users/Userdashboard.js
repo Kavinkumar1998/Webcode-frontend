@@ -2,6 +2,7 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Dashboard } from '../../Base/Base2';
+import withAuthorization from '../../Authorization';
 
 
 const Userdashboard = ({User,setUser}) => {
@@ -14,13 +15,16 @@ const Userdashboard = ({User,setUser}) => {
   const response = await fetch(`https://wecode-backend.vercel.app/api/Users/deleteusers/${Id}`,{
     method:"DELETE",
     headers: {
-     "Content-Type":"application/json"
+      "x-auth-token": localStorage.getItem("token"),
+       "Content-Type":"application/json",
+       'role':  localStorage.getItem("role")
     },
    });
 const data = await response.json();
 
     const removeUser = User.filter((User)=>User._id !== Id);
     setUser(removeUser);
+    history.go(0);
   }catch(error){
     console.log(error);
       } 
@@ -29,8 +33,8 @@ const data = await response.json();
   };
   return (
     <Dashboard
-    title = "User Details"
-    description= "Veiw User Details Here"
+    title = "Employee Details"
+    description="Veiw Employee Data"
     >
   <div className="card-container"> 
               {User.map((User,index)=>(
@@ -41,15 +45,15 @@ const data = await response.json();
                          First Name : {User.FirstName}
                          </Typography>
 
-                         <Typography gutterBottom variant="h5" component="div">
+                         <Typography gutterBottom variant="h6" component="div">
                          Last Name : {User.LastName}
                          </Typography>
 
-                         <Typography variant="body2" color="text.secondary">
+                         <Typography variant="body3" >
                          email : {User.email}
                          </Typography>
-  
-                         <Typography variant="body2" color="text.secondary">
+                                <br/>
+                         <Typography variant="body3" >
                          role : {User.role}
                          </Typography>
   
@@ -69,4 +73,4 @@ const data = await response.json();
   )
 }
 
-export default Userdashboard
+export default withAuthorization(Userdashboard)

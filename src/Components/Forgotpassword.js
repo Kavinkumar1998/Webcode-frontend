@@ -32,7 +32,7 @@ export const Forgetpassword = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Card className="login-container">
-        <h4>Trouble with logging in ?</h4>
+        <h4 className="header">Trouble with logging in ?</h4>
         <p>Enter your email address and we will send OTP</p>
         <CardContent className="card-content">
           <TextField

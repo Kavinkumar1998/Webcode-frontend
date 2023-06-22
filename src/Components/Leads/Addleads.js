@@ -1,9 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Button, TextField } from '@mui/material'
+import { Box, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import { Dashboard } from '../../Base/Base2'
+import withAuthorization from '../../Authorization'
 
 
 export const userValidationSchema = yup.object({
@@ -42,7 +43,9 @@ const Addleads = ({Leads,setLeads}) => {
                             method:"POST",
                             body : JSON.stringify(newLeads),
                             headers: {
-                             "Content-Type":"application/json"
+                              "x-auth-token": localStorage.getItem("token"),
+                              "Content-Type":"application/json",
+                              'role':  localStorage.getItem("role")
                             },
                            });
             
@@ -51,8 +54,8 @@ const Addleads = ({Leads,setLeads}) => {
                            
                          setLeads([...Leads,Sdata])
                       
-                           history.push("/Leaddashboard")
-                        
+                           history.push("/employee/Leaddashboard")
+                           history.go(0);
                   
                   }
                   catch(error){
@@ -64,57 +67,102 @@ const Addleads = ({Leads,setLeads}) => {
 
 
               return (
-                <Dashboard title="Add Leads"
-                description="You can Add a New Lead Data" >
-              <div className="input">
-                               <form onSubmit={handleSubmit}>
-                               <TextField
-                           fullWidth label="Enter the First Name" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.name} 
-                            name="name"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.name && errors.name? <p style={{color:"red"}}> {errors.name} </p>: ""}
-              
+                <Dashboard title="Add  Lead data"
+                description="You can Add a New Lead Data"> 
+                  <div className="input">
+                  <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box className="main-box"  >
+          <Typography    sx={{fontWeight:"Bold","@media(max-width: 480px)":{
+            fontSize:"16px"
+          }}}  component="h1" variant="h5"> Add Lead Details </Typography>
+           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+            <Grid item xs={12}>
 
-                              <TextField
-                           fullWidth label="Enter the email" 
-                           id="fullWidth" onChange={handleChange} 
-                           value={values.email} 
-                            name="email"
-                            onBlur= {handleBlur}
-                            />
-                              {touched.email && errors.email ? <p style={{color:"red"}}> {errors.email} </p>: ""}
-              
-                          <TextField
-                           fullWidth label="Enter the phoneNumber"
-                            id="fullWidth"
-                             onChange={handleChange}
-                              value={values.phoneNumber}
-                               name="phoneNumber"
-                               onBlur= {handleBlur}
-                               />
-                                {touched.phoneNumber && errors.phoneNumber ? <p style={{color:"red"}}> {errors.phoneNumber} </p>: ""}
-              
-                          <TextField
-                           fullWidth label="Enter the status"
-                            id="fullWidth" 
-                            onChange={handleChange}
-                             value={values.status}
-                              name="status"
-                              onBlur= {handleBlur}
-                               />
-                                {touched.status && errors.status ? <p style={{color:"red"}}> {errors.status} </p>: ""}
-              
-                        
-              
-                            <Button className="add-btn" type="submit" variant="contained" color="success">ADD</Button>
-                      
-                               </form>
-                          </div>
+                <TextField
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="name"
+                  value={values.name}
+                  autoComplete="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.name && errors.name}
+                  helperText={touched.name && errors.name ? errors.name : null}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && errors.email}
+                  helperText={touched.email && errors.email ? errors.email : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phoneNumber"
+                  label="Phone Number"
+                  name="phoneNumber"
+                  autoComplete="phoneNumber"
+                  value={values.phoneNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.phoneNumber && errors.phoneNumber}
+                  helperText={touched.phoneNumber && errors.phoneNumber ? errors.phoneNumber : null}
+                  
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="status"
+                  label="Status"
+                  name="status"
+                  autoComplete="status"
+                  value={values.status}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.status && errors.status}
+                  helperText={touched.status && errors.status ? errors.status : null}
+                  
+                />
+              </Grid>
+
+
+            </Grid>
+            <Button 
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 ,fontWeight:"Bold"}}
+            >
+             Add Leads
+            </Button>
+          </Box>
+        </Box>
+
+      </Container>
+                  </div>
+            
                 </Dashboard>
                 )
 }
 
-export default Addleads
+export default withAuthorization(Addleads); 
