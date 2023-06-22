@@ -35,7 +35,7 @@ export const Loginpage = () => {
           localStorage.setItem("Email", result.Email);
           localStorage.setItem("token", result.token);
           localStorage.setItem("role", result.role);
-          history.push("/admin/adduser");
+          history.push("/Home");
         }
       },
     });
